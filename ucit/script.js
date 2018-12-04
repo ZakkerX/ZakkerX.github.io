@@ -2,28 +2,21 @@ $(function(){
 
 	$('.btn').on('click', function () {
 
-		var i, YY, M, NN, CNTi, result, answer, err;
+		var i, YY, M, NN, CNTi, result, answer;
 
 		i = parseInt($('#select option:selected').val());
-		console.log(i);
 
-		
 		YY = parseInt($('#age').val());
 
 		M = parseInt($('#month').val());
 
 		NN = parseInt($('#numGD').val());
 
-		err = $('.err');
-
 		answer = $("#out");
 
 		$('input[type=text]').each(function(){
 			
 		var inp = $(this);
-
-
-
 
 		if(inp.val() == '' || isNaN(inp.val())){
 			inp.addClass('err');
@@ -57,12 +50,11 @@ $(function(){
 			
 		result = ((((YY*10+M)*100+NN)*10+i)*10+NN)%CNTi+1;
 
-			if(result !== result){
-				answer.text('Вы ввели неверные значения');
-			} else{
-				answer.text('№ ' + result);
-			}
-	
+		if(result !== result){
+			answer.text('Вы ввели неверные значения');
+		} else{
+			answer.text('№ ' + result);
+		}
 	
 	});
 
