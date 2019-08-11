@@ -1,0 +1,612 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+*
+	outline: none !important
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	background-color: $bg-color
+	font-size: 14px
+	min-width: 320px
+	position: relative
+	line-height: 1.7
+	font-family: $default-font, sans-serif
+	-webkit-font-smoothing: antialised
+	font-weight: normal
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+.left_side
+	background-color: darken($bg-color, 4%) 
+	position: fixed
+	left: 0
+	top: 0
+	width: 60px
+	height: 100%
+	z-index: 100
+	color: #ffffff
+	overflow-x: hidden
+	outline: none
+	transition: all .5s
+	&.active
+		width: 300px
+		.btn_mnu 
+			background-color: transparent
+			&:hover
+				div
+					background-color: red
+		.user_info 
+			opacity: 1
+		.aside_content 
+			li 
+				a:before
+					margin-left: -32px
+			nav 
+				margin-top: 35px
+			li:hover
+				a
+					text-indent: 10px
+
+
+/* Кнопка меню */
+.btn_mnu
+	margin: 5px 5px
+	width: 50px
+	height: 50px
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	background-color: $accent
+	cursor: pointer
+	position: relative
+	float: right
+	transition: all .5s
+	&_row
+		height: 2px
+		width: 60%
+		margin: 2px 0
+		background-color: #fff
+		position: relative
+		transition: all .5s
+	&.active
+		.btn_mnu_row:first-child
+			transform: rotate(-135deg)
+			top: 6px
+		.btn_mnu_row:last-child 
+			transform: rotate(-225deg)
+			top: -6px
+		.btn_mnu_row:nth-child(2) 
+			opacity: 0
+
+.aside_content
+	position: absolute
+	top: 50px
+	width: 100%
+	padding: 25px 0
+	nav
+		margin: -110px 0 35px
+		position: relative
+		z-index: 5
+		transition: all .5s
+		ul 
+			padding: 0
+			margin: 0
+			list-style-type: none
+			li
+				a
+					border-bottom: 1px solid #212121
+					color: #b2b2b2
+					display: block
+					padding: 10px 0 10px 70px
+					white-space: nowrap
+					background-color: darken($bg-color, 4%) 
+					transition: all .5s
+					&:first-child
+						border-top: 1px solid #212121
+					&:hover
+						text-decoration: none
+						background-color: $accent
+						color: #ffffff
+						border-color: $accent
+					&:before
+						display: inline-block
+						font-family: 'Font Awesome 5 Free'
+						font-size: 25px
+						line-height: 0
+						margin-left: -56px
+						margin-right: 18px
+						margin-top: -4px
+						vertical-align: middle
+						transition: all .5s
+						text-align: center
+				&:nth-child(1)
+					a
+						&:before 
+							content: "\f302"
+				&:nth-child(2)
+					a
+						&:before 
+							content: "\f2bb"
+				&:nth-child(3)
+					a
+						&:before 
+							content: "\f086"
+				&:nth-child(4)
+					a
+						&:before 
+							font-family: "Font Awesome 5 Brands"
+							content: "\f189"
+				&:nth-child(5)
+					a
+						&:before 
+							padding-left: 2px
+							font-size: 30px
+							font-family: "Font Awesome 5 Brands"
+							content: "\f16d"
+
+.user_info
+	text-align: center
+	opacity: 0
+	white-space: nowrap
+	transition: all .2s
+	img
+		width: 120px
+		height: 120px
+		border-radius: 50%
+		margin-bottom: 10px
+	h2 
+		font-size: 16px
+	p 
+		color: $text
+		font-size: 12px
+		letter-spacing: 1px
+
+.content
+	position: relative
+	margin: 5px 5px 150px 60px
+	left: 0
+	transition: all .4s
+
+.gallery
+	a
+		overflow: hidden
+		width: 320px
+		display: block
+	img 
+		display: block
+		max-width: 320px
+		transition: all 20s
+		&:hover
+			transform: scale(5)
+
+.left_side.active + .content 
+	left: 250px
+	transition-delay: .5s
+
+.filter_items 
+	bottom: 0
+	color: #fff
+	padding: 10px 10px 0 55px
+	margin-top: 100px
+	position: fixed
+	right: 0
+	text-align: right
+	width: 100%
+	background-color: darken($bg-color, 4%) 
+	transition: .5s ease
+	overflow-x: hidden
+	display: none
+	transition: all .5s
+
+
+// .swap
+// 	height: 50px
+// 	width: 100px
+// 	background-color: $accent
+// 	position: fixed
+// 	left: 50%
+// 	bottom: 0%
+// 	text-align: center
+// 	cursor: pointer
+// 	z-index: 100
+// 	color: #ffffff
+// 	font-size: 16px
+// 	border-top-left-radius: 50%
+// 	border-top-right-radius: 50%
+// 	.fas
+// 		display: block
+// 		color: #ffffff
+
+// 		font-size: 20px
+// 		transition: .2s ease
+// 	&:hover
+// 		.fas
+// 			font-size: 26px
+
+.filter_items-display
+	display: block
+
+.filter_label 
+	color: #ffffff
+	background-color: transparent
+	border-color: #fff
+	padding: 5px 15px
+	opacity: .4
+	margin: 0 3px 15px
+	font-size: 12px
+	letter-spacing: 3px
+	border: 1px #fff solid
+	transition: all .5s
+
+.filter_label:hover,
+.filter_label.active 
+	background-color: $accent
+	opacity: 1
+	border-color: $accent
+
+
+////////////////////////////
+.center
+	z-index: 100
+	cursor: pointer
+	position: fixed
+	bottom: 0%
+	left: 48%
+	.down
+		position: relative
+		width: 50px
+		height: 80px
+		border-radius: 25px
+		background-color: $accent
+		border: 4px solid $text
+		overflow: hidden
+		&:before
+			content: ''
+			position: absolute
+			width: 6px
+			height: 6px
+			border-radius: 50%
+			background-color: #fff
+			left: 50%
+			top: 10px
+			transform: translate(-50%, 0)
+			border-radius: 3px
+			animation: aminateBtn 1s linear infinite
+		&:after
+			content: ''
+			position: absolute
+			width: 6px
+			height: 15px
+			border-radius: 50%
+			background-color: #fff
+			left: 50%
+			top: 5px
+			transform: translate(-50%, 0)
+			border-radius: 3px
+
+@keyframes aminateBtn
+	0%
+		transform: translate(-50%, 20px)
+	80%
+		transform: translate(-50%, 60px)
+	100%
+		transform: translate(-50%, 100px)
+////////////////////////////////////
+.mfp-content
+	width: 100%
+
+.mfp-container
+	padding: 0
+
+img.mfp-img
+	display: block
+	height: auto
+	max-height: none !important
+	padding: 0
+	width: 100%
+
+.mfp-figure button.mfp-close
+	background-color: $accent
+	height: 50px
+	padding: 0
+	position: fixed
+	right: 15px
+	text-align: center
+	width: 50px
+	cursor: pointer !important
+	&:hover
+		color: red
+		font-size: 45px
+
+/* magnific library opened
+
+.mfp-zoom-out-cur .content
+	left: -100%
+
+.mfp-figure
+	background-color: transparent
+	&::after
+		bottom: 0
+		top: 0
+		background-color: #181818
+
+.mfp-bottom-bar
+	margin-left: -20px
+
+button.mfp-arrow
+	display: none
+
+/* overlay at start
+
+.mfp-fade
+	&.mfp-bg
+		height: 100% !important
+		position: fixed !important
+		opacity: 0
+		transition: all .5s
+		transition-delay: .4s
+		&.mfp-ready, &.mfp-removing
+			opacity: 1
+	&.mfp-wrap
+		top: 0 !important
+		position: fixed !important
+		height: 100% !important
+		.mfp-content
+			left: 100%
+			transition: all .4s
+		&.mfp-ready .mfp-content
+			left: 0
+		&.mfp-removing
+			.mfp-content
+				left: 100%
+				transition: all .4s
+			.mfp-arrow
+				display: none !important
+
+
+
+.inside
+	background-color: #fafafa
+	.content
+		padding: 70px 10% 50px
+
+.content_header
+	text-align: center
+	img
+		width: 220px
+		height: 220px
+		border-radius: 50%
+		margin-bottom: 35px
+	p
+		letter-spacing: 3px
+
+.content_body
+	margin-top: 35px
+	font-size: 16px
+
+.ul_contacts
+	margin: 0
+	padding: 0
+	list-style-type: none
+	li
+		margin: 0
+		padding: 0
+		list-style-type: none
+
+.form_contacts
+	margin-top: 50px
+	padding: 0
+
+.ul_contacts
+	padding-top: 15px
+	li
+		margin-bottom: 40px
+	i
+		font-size: 28px
+		margin-right: 5px
+		vertical-align: middle
+	h3
+		margin-bottom: 5px
+		font-size: 20px
+
+.content_body a
+	color: $accent
+	text-decoration: underline
+
+.form_contacts form
+	background-color: #181818
+	color: #fff
+	padding: 30px
+
+.callback h3
+	margin-top: 0
+	text-align: center
+	margin-bottom: 25px
+	font-size: 22px
+	font-weight: normal
+
+.form_contacts
+	label
+		color: #5b5b5b
+		font-size: 13px
+		letter-spacing: 3px
+		width: 100%
+		margin-bottom: 15px
+	input
+		display: block
+		width: 100%
+		background-color: #2e2e2e
+		border: 1px solid #484848
+		color: #fff
+		display: block
+		margin-top: 5px
+		padding: 10px
+		width: 100%
+		max-width: 100%
+		font-size: 15px
+	textarea
+		background-color: #2e2e2e
+		border: 1px solid #484848
+		color: #fff
+		display: block
+		margin-top: 5px
+		padding: 10px
+		width: 100%
+		max-width: 100%
+		font-size: 15px
+
+
+
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 15px 20px
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	cursor: pointer
+	width: 100%
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loader
+	margin: 0
+	padding: 0
+	display: flex
+	justify-content: center
+	align-items: center
+	height: 100vh
+	background-color: $bg-color
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 9999
+	&_inner
+		position: relative
+		width: 120px
+		height: 120px
+		border-radius: 50%
+		background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0)
+		animation: animate 0.5s linear infinite
+		// &:after
+		// 	content: ''
+		// 	position: absolute
+		// 	top: 0
+		// 	left: 0
+		// 	right: 0
+		// 	bottom: 0
+		// 	background: $bg-color
+		// 	border-radius: 50%
+		span
+			position: absolute
+			width: 100%
+			height: 100%
+			border-radius: 50%
+			background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0)
+			&:nth-child(1)
+				filter: blur(25px)
+			&:nth-child(2)
+				filter: blur(30px)
+			&:nth-child(3)
+				filter: blur(55px)
+			&:nth-child(4)
+				filter: blur(80px)
+
+@keyframes animate
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "media" // Always at the end
